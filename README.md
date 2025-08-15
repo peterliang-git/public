@@ -1,17 +1,18 @@
-## start docker engine through docker desktop
+## start localstack cli
+start docker engine through docker desktop
 download localstack and extract it to a folder(d:\localstack)
 download terraform and extract it ot a folder(d:\terraform)
 set path to those two folders
 localstack start - this will start docker container and if it's not there, it will pull the image
-## AWS CLI V2 and other Apps
-download aws cli v2 and install the msi.
-download python and install it.
-download go and install.
-## VSCode
+## start localstack using docker compose
 open vscode and install docker extension
 create a folder and create file with name docker-compose.yaml, copy content from localstack installation doc for docker compose
 in vscode terminal run docker compose up - it used docker-compose.yaml
 in docker desktop, the container should be up running
+## AWS CLI V2 and other Apps
+download aws cli v2 and install the msi.
+download python and install it.
+download go and install.
 ## Terraform
 create terraform\localstack folder in vscode and create a main.tf file there.
 update main.tf file provider "aws" section, use test/test and us-east-1 as awd, then define endpoint and resources.
