@@ -1,12 +1,16 @@
 import { SFNClient, StartExecutionCommand } from "@aws-sdk/client-sfn";
 
 // Main Lambda handler
-export const listener_handler = async (event,ctx) => {
-    console.log('Received event:', JSON.stringify(event, null, 2));
-    const stepFunctionClient = new SFNClient({
-      region: 'us-east-1'
+export const listener_handler = async (event, context) => {
+  console.log('Received event:', JSON.stringify(event, null, 2));
+  const lambdaFunctionArn = context.invokedFunctionArn;
+  const awsAccountId = lambdaFunctionArn.split(':')[4];
+  const awsRegion = lambdaFunctionArn.split(':')[3];
+  const stepFunctionArn = "arn:aws:states:" + awsRegion + ":" + awsAccountId + ":stateMachine:my-stepfunction";
+
+  const stepFunctionClient = new SFNClient({
+    region: awsRegion
   });
-    const stepFunctionArn = "arn:aws:states:us-east-1:<account>:stateMachine:my-stepfunction";
 
     for (const record of event.Records) {
       console.log('record in event.Records:', record);
