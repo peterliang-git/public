@@ -1,0 +1,4 @@
+output "backend_bucket_name" {
+  value       = aws_s3_bucket.terraform_backend_bucket.bucket
+  description = "The tf backend bucket name."
+}
